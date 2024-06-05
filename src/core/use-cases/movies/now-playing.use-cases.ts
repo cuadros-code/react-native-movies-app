@@ -6,6 +6,7 @@ import { Movie } from "../../models/movie.model";
 export const moviesNowPlayingUseCase = async ( fetcher: HttpAdapter ): Promise<Movie[]> => {
   try {
     const nowPlaying = await fetcher.get<NowPlayingResponse>('/now_playing')
+    console.log(nowPlaying);
     return []
   } catch (error) {
     throw new Error('now-playing')
