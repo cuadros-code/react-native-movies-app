@@ -4,11 +4,11 @@ import { MovieMapper } from "../../../infrastructure/mappers/movie.mapper";
 import { Movie } from "../../models/movie.model";
 
 
-export const moviesUpcomingUseCase = async ( fetcher: HttpAdapter ): Promise<Movie[]> => {
+export const moviesTopRatedUseCase = async ( fetcher: HttpAdapter ): Promise<Movie[]>  => {
   try {
-    const upcoming = await fetcher.get<MovieResponse>('/upcoming')
-    return upcoming.results.map( MovieMapper.fromMovieDBResultToEntity )
+    const topRated = await fetcher.get<MovieResponse>('/top_rated')
+    return topRated.results.map( MovieMapper.fromMovieDBResultToEntity )
   } catch (error) {
-    throw new Error('upcoming')
+    throw new Error('top_rated')
   }
 }
